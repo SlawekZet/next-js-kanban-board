@@ -7,11 +7,9 @@ import { useRouter } from 'next/navigation';
 import { Suspense, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import {
-  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
-import { useKanbanTaskManagerContext } from './lib/contexts/KanbanTaskManagerContext';
 import { ErrorComponent } from './ui/utils/ErrorComponent';
 import { Loading } from './ui/utils/Loading';
 import { Button } from './ui/utils/buttons/Button';
@@ -19,13 +17,11 @@ import { SignUpForm } from './ui/utils/forms/SignUpForm';
 import { SignInForm } from './ui/utils/forms/SingInForm';
 
 export default function Home() {
-  const [user] = useAuthState(auth);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [signup, setSignup] = useState(true);
+  const [signup, setSignup] = useState(false);
   const router = useRouter();
   const { resolvedTheme } = useTheme();
-  const { setBoards, setBoardToRender } = useKanbanTaskManagerContext();
 
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);

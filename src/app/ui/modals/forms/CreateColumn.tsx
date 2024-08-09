@@ -117,7 +117,6 @@ export const CreateColumnForm: React.FC<CreateColumnFormProps> = ({
                   type="text"
                   id={column.id}
                   className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 w-full dark:bg-gray5 dark:border-gray4 dark:text-white"
-                  defaultValue={column.name}
                   value={column.name}
                   onChange={(e) => handleColumnNameChange(e, index)}
                   placeholder={`Column ${index + 1}`}
