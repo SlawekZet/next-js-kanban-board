@@ -93,7 +93,7 @@ export default function Home() {
             height={85}
             src="/logo-light.svg"
             alt="kanban task manager logotype"
-            className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+            className="p-6 border-r-[1px] border-gray1 dark:border-gray4"
           />
         ) : (
           <Image
@@ -101,7 +101,7 @@ export default function Home() {
             height={85}
             src="/logo-dark.svg"
             alt="kanban task manager logotype"
-            className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+            className="p-6 border-r-[1px] border-gray1 dark:border-gray4"
           />
         )}
 

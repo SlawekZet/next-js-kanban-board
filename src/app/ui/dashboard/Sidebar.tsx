@@ -38,12 +38,12 @@ export default function Sidebar() {
   };
 
   return isSidebarHidden ? (
-    <div className="w-full justify-self-start self-end mb-4 z-10 absolute">
+    <div className="w-full justify-self-start self-end mb-6 z-10 absolute">
       <Button
-        className="bg-violet2 p-2 rounded-r-full w-12 h-12 flex items-center"
+        className="bg-violet2 p-2 rounded-r-full w-12 h-12 flex items-center pl-3"
         onClick={handleHideSidebarClick}
       >
-        <EyeIcon className="size-6" />
+        <EyeIcon className="size-5 stroke-gray1" />
       </Button>
     </div>
   ) : (
