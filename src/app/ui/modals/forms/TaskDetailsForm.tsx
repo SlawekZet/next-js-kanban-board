@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Task } from '../../utils/BoardInterfaces';
 import { Button } from '../../utils/buttons/Button';
 import { ButtonPrimaryS } from '../../utils/buttons/ButtonPrimaryS';
-import { saveToLocalStorage } from '../../utils/LocalStorage';
 import { dataSave } from '../../utils/utils';
 import { DeleteElement } from './DeleteElement';
 import { EditTaskForm } from './EditTaskForm';
@@ -85,9 +84,9 @@ export const TaskDetailsForm: React.FC<TaskDetailsFormProps> = ({
     setBoards(newBoards);
     if (newBoardToRender) {
       setBoardToRender(newBoardToRender);
-      user
-        ? dataSave(user.uid, newBoards)
-        : saveToLocalStorage({ key: 'boards', value: newBoards });
+      if (user) {
+        dataSave(user.uid, newBoards);
+      }
     } else {
       console.error('Something went wrong while saving the data');
     }

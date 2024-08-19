@@ -3,7 +3,6 @@ import { auth } from '@/app/lib/firebase/config';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { TaskList } from '../utils/BoardInterfaces';
-import { saveToLocalStorage } from '../utils/LocalStorage';
 import { dataSave } from '../utils/utils';
 import { BoardElement } from './BoardElement';
 
@@ -66,8 +65,6 @@ export const BoardsCard = () => {
         setBoards(updatedBoards);
         if (user) {
           dataSave(user.uid, updatedBoards);
-        } else {
-          saveToLocalStorage({ key: 'boards', value: updatedBoards });
         }
       }
     }

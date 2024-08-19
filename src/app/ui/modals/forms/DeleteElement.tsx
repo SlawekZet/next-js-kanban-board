@@ -4,7 +4,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { ButtonSecondary } from '../../utils/buttons/ButtonSecondary';
 import { ButtonDestructive } from '../../utils/buttons/DestructiveButton';
-import { saveToLocalStorage } from '../../utils/LocalStorage';
 import { dataSave } from '../../utils/utils';
 
 interface DeleteElementProps {
@@ -61,18 +60,17 @@ export const DeleteElement: React.FC<DeleteElementProps> = ({
       );
       setBoards(newBoards);
       setBoardToRender(newBoardToRender[0]);
-      user
-        ? dataSave(user.uid, newBoards)
-        : saveToLocalStorage({ key: 'boards', value: newBoards });
+      if (user) {
+        dataSave(user.uid, newBoards);
+      }
     } else {
       const newBoards = boards.filter((board) => board.id !== elementId);
 
       setBoards(newBoards);
       setBoardToRender(newBoards[0]);
-      user
-        ? dataSave(user.uid, newBoards)
-        : saveToLocalStorage({ key: 'boards', value: newBoards });
-      setActiveBoard(0);
+      if (user) {
+        dataSave(user.uid, newBoards);
+      }
     }
     setIsDeleteModalVisible(false);
     const modal = document.querySelector<HTMLDialogElement>(`#${modalId}`);

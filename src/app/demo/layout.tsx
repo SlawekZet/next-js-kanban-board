@@ -7,7 +7,7 @@ import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
 import { Loading } from '../ui/utils/Loading';
 
-export default function DashboardLayout({
+export default function DemoLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -18,24 +18,16 @@ export default function DashboardLayout({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (user) {
-          const response = await fetch('http://localhost:3000/api/fetch-data', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ uid: user.uid }),
-          });
+        const demoResponse = await fetch(
+          'http://localhost:3000/api/fetch-demo-data'
+        );
 
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-
-          const data = await response.json();
-
-          setBoards(data);
-          setBoardToRender(data[0]);
+        if (!demoResponse.ok) {
+          throw new Error('Network response was not ok');
         }
+        const demoData = await demoResponse.json();
+        setBoards(demoData);
+        setBoardToRender(demoData[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

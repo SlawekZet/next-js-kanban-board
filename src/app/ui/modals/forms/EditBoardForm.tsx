@@ -5,12 +5,11 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { v4 as uuidv4 } from 'uuid';
-import { Board, TaskList } from '../../utils/BoardInterfaces';
+import { TaskList } from '../../utils/BoardInterfaces';
 import { Button } from '../../utils/buttons/Button';
 import { ButtonPrimaryS } from '../../utils/buttons/ButtonPrimaryS';
 import { ButtonSecondary } from '../../utils/buttons/ButtonSecondary';
 import { ButtonDestructive } from '../../utils/buttons/DestructiveButton';
-import { saveToLocalStorage } from '../../utils/LocalStorage';
 import { dataSave } from '../../utils/utils';
 
 interface EditBoardFormProps {
@@ -97,9 +96,9 @@ export const EditBoardForm: React.FC<EditBoardFormProps> = ({ modalId }) => {
       });
 
       setBoards(updatedBoards);
-      user
-        ? dataSave(user.uid, updatedBoards)
-        : saveToLocalStorage({ key: 'boards', value: updatedBoards });
+      if (user) {
+        dataSave(user.uid, updatedBoards);
+      }
     }
   };
 

@@ -47,7 +47,6 @@ export const Modal: React.FC<ModalProps> = ({ children, id }) => {
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.keyCode === 27) {
-        console.log('Escape key pressed!');
         setIsElementEdited(false);
         setIsMenuVisible(false);
         setIsDeleteModalVisible(false);

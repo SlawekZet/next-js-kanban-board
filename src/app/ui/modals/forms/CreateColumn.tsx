@@ -10,7 +10,6 @@ import { Button } from '../../utils/buttons/Button';
 import { ButtonPrimaryS } from '../../utils/buttons/ButtonPrimaryS';
 import { ButtonSecondary } from '../../utils/buttons/ButtonSecondary';
 import { ButtonDestructive } from '../../utils/buttons/DestructiveButton';
-import { saveToLocalStorage } from '../../utils/LocalStorage';
 import { dataSave } from '../../utils/utils';
 
 interface CreateColumnFormProps {
@@ -85,9 +84,9 @@ export const CreateColumnForm: React.FC<CreateColumnFormProps> = ({
       });
       setBoards(updatedBoards);
 
-      user
-        ? dataSave(user.uid, updatedBoards)
-        : saveToLocalStorage({ key: 'boards', value: updatedBoards });
+      if (user) {
+        dataSave(user.uid, updatedBoards);
+      }
     }
   };
 

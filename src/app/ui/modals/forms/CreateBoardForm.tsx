@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { v4 as uuidv4 } from 'uuid';
 import { TaskList } from '../../utils/BoardInterfaces';
-import { saveToLocalStorage } from '../../utils/LocalStorage';
 import { Button } from '../../utils/buttons/Button';
 import { ButtonPrimaryS } from '../../utils/buttons/ButtonPrimaryS';
 import { ButtonSecondary } from '../../utils/buttons/ButtonSecondary';
@@ -95,9 +94,9 @@ export const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
     setActiveBoard(boards.length);
     setBoardName('');
     setColumns(initialColumns);
-    user
-      ? dataSave(user.uid, newBoards)
-      : saveToLocalStorage({ key: 'boards', value: newBoards });
+    if (user) {
+      dataSave(user.uid, newBoards);
+    }
   };
 
   return (

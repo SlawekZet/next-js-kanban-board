@@ -54,7 +54,7 @@ export default function Home() {
           console.log('User created and data successfully written!');
           setEmail('');
           setPassword('');
-
+          router.refresh();
           router.push('/dashboard');
         } else {
           const errorData = await response.json();
@@ -68,6 +68,7 @@ export default function Home() {
         const res = await signInWithEmailAndPassword(email, password);
         setEmail('');
         setPassword('');
+        router.refresh();
         router.push('/dashboard');
       } catch (error) {
         console.error('An error has occured:', error);
@@ -141,7 +142,7 @@ export default function Home() {
         <ErrorBoundary fallback={<ErrorComponent />}>
           <Suspense fallback={<Loading />}>
             <Link
-              href="/dashboard"
+              href="/demo"
               className="text-sm text-gray5 dark:text-gray3 px-4 py-2 rounded-lg text-center"
             >
               Demo
