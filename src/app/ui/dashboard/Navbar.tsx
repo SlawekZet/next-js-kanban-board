@@ -40,8 +40,8 @@ export const Navbar = () => {
   };
   const { resolvedTheme } = useTheme();
   return (
-    <div className="flex flex-row justify-between w-full h-[80px] border-b-[1px] border-gray2 bg-white dark:bg-gray5 dark:border-gray4 dark:text-white">
-      <div className=" flex flex-row items-center ">
+    <div className="flex flex-row justify-between w-full h-[80px] md:h-[80px] border-b-[1px] border-gray2 bg-white dark:bg-gray5 dark:border-gray4 dark:text-white">
+      <div className=" flex flex-row items-center justify-center">
         <div className="">
           {isSidebarHidden ? (
             resolvedTheme === 'dark' ? (
@@ -63,14 +63,17 @@ export const Navbar = () => {
             )
           ) : null}
         </div>
-        <h1 className="p-8 font-bold text-xl">
+        <h1 className="p-6 md:p-4 font-bold text-xl md:text-lg mob:text-sm flex">
           {boardToRender ? boardToRender.name : 'No board chosen'}
         </h1>
       </div>
-      <div className="flex items-center px-4">
+      <div className="flex items-center pl-4">
         {boardToRender ? (
-          <div className="flex gap-4 relative">
-            <ButtonPrimaryL onClick={handleCreateNewTaskClick}>
+          <div className="flex relative">
+            <ButtonPrimaryL
+              onClick={handleCreateNewTaskClick}
+              className="md:text-sm md:h-10 md:px-4 md:w-40 w-48 "
+            >
               + Add new Task
             </ButtonPrimaryL>
             <Button onClick={handleMenuClick} className="px-2">

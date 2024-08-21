@@ -12,6 +12,7 @@ export const BoardList = () => {
 
   useEffect(() => {
     setActiveBoard(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBoardClick = (index: number, e: Board) => {
@@ -41,19 +42,21 @@ export const BoardList = () => {
                 onClick={() => handleBoardClick(index, e)}
                 className={
                   activeBoard === index
-                    ? 'flex flex-row py-3 items-center font-bold text-white bg-violet2 gap-4 w-5/6 rounded-r-full pl-8'
-                    : 'flex flex-row py-3 items-center font-bold text-gray3 gap-4 pl-8'
+                    ? 'flex flex-row py-3 pr-3 items-center font-bold text-white bg-violet2 gap-4 w-5/6 rounded-r-full pl-8 text-m '
+                    : 'flex flex-row py-3 pr-3 items-center font-bold text-gray3 gap-4 pl-8 text-m'
                 }
               >
                 <TableCellsIcon
                   fill={activeBoard === index ? '#FFFFFF' : '#828FA3'}
-                  className="size-6"
+                  className="size-6 flex-shrink-0"
                 />
-                <p>{e.name}</p>
+                <p className="md:max-w-[120px] max-w-[160px] break-words text-left">
+                  {e.name}
+                </p>
               </Button>
             ))}
         <Button
-          className="flex flex-row py-2 items-center text-violet2 font-bold gap-4 pl-8"
+          className="flex flex-row py-2 items-center text-violet2 font-bold gap-4 pl-8 text-m"
           onClick={handleCreateBoardClick}
         >
           <TableCellsIcon fill="#635FC7" className="size-6" />

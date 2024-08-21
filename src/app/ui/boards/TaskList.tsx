@@ -28,7 +28,7 @@ export const TaskList = ({ name, tasks, columnId, boardId }: TaskListProps) => {
           </div>
           <div
             id="tasksContainer"
-            className="flex flex-col gap-4 max-h-[calc(100vh-177px)] h-[calc(100vh-177px)] overflow-auto pl-1 pr-2 pt-1 pb-2"
+            className="flex flex-col gap-4 h-full overflow-auto pl-1 pr-2 pt-1 pb-2"
           >
             {tasks
               ? tasks.map((e, index) => (

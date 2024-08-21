@@ -14,7 +14,7 @@ export const ButtonPrimaryL: React.FC<ButtonPrimaryLProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full bg-violet2 hover:bg-violet1 h-12 px-8 py-4 flex items-center text-white font-bold ${className}`}
+      className={`rounded-full bg-violet2 hover:bg-violet1 h-12 px-8 py-4 flex items-center text-white font-bold justify-center ${className}`}
     >
       {children}
     </button>

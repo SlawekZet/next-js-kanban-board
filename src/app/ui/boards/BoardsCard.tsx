@@ -71,7 +71,7 @@ export const BoardsCard = () => {
   };
 
   return (
-    <div className="flex flex-col w-full bg-gray1 dark:bg-gray6">
+    <div className="flex flex-col w-full h-full bg-gray1 dark:bg-gray6">
       <DragDropContext onDragEnd={handleDragDrop}>
         <BoardElement />
       </DragDropContext>
