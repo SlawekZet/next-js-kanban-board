@@ -31,10 +31,10 @@ const config: Config = {
       '2xl': '30px',
     },
     screens: {
-      sm: { max: '640px' },
       md: { max: '768px' },
       mob: { max: '375px' },
       lg: { max: '1024px' },
+      xl: { max: '1440px' },
     },
     extend: {
       backgroundImage: {
