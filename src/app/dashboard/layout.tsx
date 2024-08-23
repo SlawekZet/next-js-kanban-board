@@ -1,11 +1,12 @@
 'use client';
-import { useEffect } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useKanbanTaskManagerContext } from '../lib/contexts/KanbanTaskManagerContext';
 import { auth } from '../lib/firebase/config';
 import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
 import { Loading } from '../ui/utils/Loading';
+import { SplashScreen } from '../ui/utils/SplashScreen';
 
 export default function DashboardLayout({
   children,
@@ -14,6 +15,12 @@ export default function DashboardLayout({
 }>) {
   const { setBoards, setBoardToRender, boards } = useKanbanTaskManagerContext();
   const [user] = useAuthState(auth);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +56,14 @@ export default function DashboardLayout({
     return <Loading />;
   }
 
-  return (
+  return isLoading ? (
+    <dialog
+      open
+      className="self-center justify-self-center rounded-lg w-[480px] p-8 backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
+    >
+      <SplashScreen />
+    </dialog>
+  ) : (
     <>
       <Sidebar />
       <div className="flex flex-col w-screen h-screen">

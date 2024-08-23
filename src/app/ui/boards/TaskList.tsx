@@ -19,8 +19,8 @@ export const TaskList = ({ name, tasks, columnId, boardId }: TaskListProps) => {
           className="flex flex-col w-[300px] min-w-[300px]"
         >
           <div className="uppercase text-gray3 tracking-[3px] font-bold">
-            <div className="flex flex-row items-center pb-6 gap-4 pl-1">
-              <div className="w-5 h-5 rounded-full bg-violet2"></div>
+            <div className="flex flex-row items-center pb-6 gap-4 pl-1 ">
+              <div className="w-5 h-5 rounded-full bg-violet2 flex-shrink-0"></div>
               <h2>
                 {name} ({tasks ? tasks.length : '0'})
               </h2>
