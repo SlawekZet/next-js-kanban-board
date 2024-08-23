@@ -44,7 +44,7 @@ export default function DemoLayout({
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col justify-self-stretch w-screen h-screen bg-red2">
+      <div className="flex flex-col justify-self-stretch w-screen h-screen">
         <Navbar />
         {children}
       </div>
