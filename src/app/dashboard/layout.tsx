@@ -1,11 +1,10 @@
 'use client';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useKanbanTaskManagerContext } from '../lib/contexts/KanbanTaskManagerContext';
 import { auth } from '../lib/firebase/config';
 import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
-import { Loading } from '../ui/utils/Loading';
 import { SplashScreen } from '../ui/utils/SplashScreen';
 
 export default function DashboardLayout({
@@ -53,13 +52,20 @@ export default function DashboardLayout({
   }, [user]);
 
   if (boards.length === 0) {
-    return <Loading />;
+    return (
+      <dialog
+        open
+        className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
+      >
+        <SplashScreen />
+      </dialog>
+    );
   }
 
   return isLoading ? (
     <dialog
       open
-      className="self-center justify-self-center rounded-lg w-[480px] p-8 backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
+      className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
     >
       <SplashScreen />
     </dialog>

@@ -5,7 +5,6 @@ import { useKanbanTaskManagerContext } from '../lib/contexts/KanbanTaskManagerCo
 import { auth } from '../lib/firebase/config';
 import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
-import { Loading } from '../ui/utils/Loading';
 import { SplashScreen } from '../ui/utils/SplashScreen';
 
 export default function DemoLayout({
@@ -46,13 +45,13 @@ export default function DemoLayout({
   }, [user]);
 
   if (boards.length === 0) {
-    return <Loading />;
+    return <SplashScreen />;
   }
 
   return isLoading ? (
     <dialog
       open
-      className="self-center justify-self-center rounded-lg w-[480px] p-8 backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
+      className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
     >
       <SplashScreen />
     </dialog>
