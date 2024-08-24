@@ -52,23 +52,11 @@ export default function DashboardLayout({
   }, [user]);
 
   if (boards.length === 0) {
-    return (
-      <dialog
-        open
-        className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
-      >
-        <SplashScreen />
-      </dialog>
-    );
+    return <SplashScreen />;
   }
 
   return isLoading ? (
-    <dialog
-      open
-      className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
-    >
-      <SplashScreen />
-    </dialog>
+    <SplashScreen />
   ) : (
     <>
       <Sidebar />

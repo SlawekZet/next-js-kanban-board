@@ -3,7 +3,10 @@ import Image from 'next/image';
 export const SplashScreen = () => {
   const { resolvedTheme } = useTheme();
   return (
-    <>
+    <dialog
+      open
+      className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
+    >
       <div className="flex flex-col justify-center items-center h-screen focus:outline-gray1">
         <div className="flex flex-col w-[250px] bg-gray1 dark:bg-gray4 items-center text-center gap-4 p-8 rounded-xl shadow-lg focus:outline-none">
           <div className="pb-4">
@@ -47,6 +50,6 @@ export const SplashScreen = () => {
           )}
         </div>
       </div>
-    </>
+    </dialog>
   );
 };

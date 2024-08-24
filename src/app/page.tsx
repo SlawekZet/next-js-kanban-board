@@ -140,16 +140,7 @@ export default function Home() {
         )}
 
         <ErrorBoundary fallback={<ErrorComponent />}>
-          <Suspense
-            fallback={
-              <dialog
-                open
-                className="self-center justify-self-center rounded-lg w-full backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 outline-none z-40"
-              >
-                <SplashScreen />
-              </dialog>
-            }
-          >
+          <Suspense fallback={<SplashScreen />}>
             <Link
               href="/demo"
               className="text-sm text-gray5 dark:text-gray3 px-4 py-2 rounded-lg text-center"
