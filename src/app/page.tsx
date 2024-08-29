@@ -10,11 +10,11 @@ import {
   useCreateUserWithEmailAndPassword,
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
-import { ErrorComponent } from './ui/utils/ErrorComponent';
-import { Loading } from './ui/utils/Loading';
 import { Button } from './ui/utils/buttons/Button';
+import { ErrorComponent } from './ui/utils/ErrorComponent';
 import { SignUpForm } from './ui/utils/forms/SignUpForm';
 import { SignInForm } from './ui/utils/forms/SingInForm';
+import { SplashScreen } from './ui/utils/SplashScreen';
 
 export default function Home() {
   const [password, setPassword] = useState('');
@@ -140,7 +140,7 @@ export default function Home() {
         )}
 
         <ErrorBoundary fallback={<ErrorComponent />}>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<SplashScreen />}>
             <Link
               href="/demo"
               className="text-sm text-gray5 dark:text-gray3 px-4 py-2 rounded-lg text-center"

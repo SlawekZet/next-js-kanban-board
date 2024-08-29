@@ -23,7 +23,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
       <form onSubmit={(e) => handleSubmit(e)} className="w-3/4 mb-2">
         <div className="mb-4">
           <label
-            className="block text-gray5 text-sm font-bold mb-2"
+            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2"
             htmlFor="email"
           >
             Email
@@ -31,7 +31,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
           <input
             id="email"
             type="email"
-            className="w-full px-3 py-2 text-gray-900 rounded-lg"
+            className="w-full px-3 py-2 rounded-lg dark:bg-gray5"
             placeholder="Type your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +40,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
         </div>
         <div className="mb-6">
           <label
-            className="block text-gray5 text-sm font-bold mb-2"
+            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2"
             htmlFor="password"
           >
             Password
@@ -48,7 +48,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
           <input
             id="password"
             type="password"
-            className="w-full px-3 py-2 rounded-lg"
+            className="w-full px-3 py-2 rounded-lg dark:bg-gray5"
             placeholder="Type password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

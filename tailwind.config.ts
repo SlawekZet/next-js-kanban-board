@@ -30,11 +30,20 @@ const config: Config = {
       xl: '24px',
       '2xl': '30px',
     },
+    screens: {
+      md: { max: '768px' },
+      mob: { max: '375px' },
+      lg: { max: '1024px' },
+      xl: { max: '1440px' },
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      outline: {
+        none: 'none', // No outline
       },
     },
   },

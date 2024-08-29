@@ -1,11 +1,11 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useKanbanTaskManagerContext } from '../lib/contexts/KanbanTaskManagerContext';
 import { auth } from '../lib/firebase/config';
 import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
-import { Loading } from '../ui/utils/Loading';
+import { SplashScreen } from '../ui/utils/SplashScreen';
 
 export default function DemoLayout({
   children,
@@ -14,6 +14,13 @@ export default function DemoLayout({
 }>) {
   const { setBoards, setBoardToRender, boards } = useKanbanTaskManagerContext();
   const [user] = useAuthState(auth);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,13 +45,15 @@ export default function DemoLayout({
   }, [user]);
 
   if (boards.length === 0) {
-    return <Loading />;
+    return <SplashScreen />;
   }
 
-  return (
+  return isLoading ? (
+    <SplashScreen />
+  ) : (
     <>
       <Sidebar />
-      <div className="flex flex-col w-screen h-screen">
+      <div className="flex flex-col justify-self-stretch w-screen h-screen">
         <Navbar />
         {children}
       </div>

@@ -13,7 +13,8 @@ import { Button } from '../utils/buttons/Button';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default function Sidebar() {
-  const { isSidebarHidden, setIsSidebarHidden } = useKanbanTaskManagerContext();
+  const { isSidebarHidden, setIsSidebarHidden, setIsBoardMenuVisible } =
+    useKanbanTaskManagerContext();
 
   const handleHideSidebarClick = () => {
     setIsSidebarHidden((prevIsSidebarHidden) => !prevIsSidebarHidden);
@@ -31,6 +32,7 @@ export default function Sidebar() {
   const handleSignOut = () => {
     if (user) {
       router.refresh();
+      setIsBoardMenuVisible(false);
       signOut(auth);
       console.log(`${user?.email} has been logged out`);
     }
@@ -47,7 +49,7 @@ export default function Sidebar() {
       </Button>
     </div>
   ) : (
-    <section className="flex flex-col justify-between flex-1 pb-4 min-w-[300px] max-w-[300px] border-r-[1px] border-gray2 dark:border-gray4 dark:bg-gray5">
+    <section className=" flex flex-col justify-between flex-1 pb-4 min-w-[300px] max-w-[300px] md:min-w-[250px] md:max-w-[250px] border-r-[1px] border-gray2 dark:border-gray4 dark:bg-gray5">
       <div className="">
         {resolvedTheme === 'dark' ? (
           <Image

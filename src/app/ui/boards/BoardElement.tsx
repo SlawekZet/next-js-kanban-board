@@ -61,10 +61,12 @@ export const BoardElement = () => {
   return (
     <div
       ref={boardRef}
-      className={`flex flex-row gap-6 px-6 pt-6 ${
-        isOverflowing ? 'pb-2' : 'pb-6'
+      className={`flex flex-row gap-6 px-6 pt-6 h-[calc(100vh-80px)] ${
+        isOverflowing ? '' : ''
       } ${
-        isSidebarHidden ? 'max-w-full' : 'max-w-[calc(100vw-300px)]'
+        isSidebarHidden
+          ? 'max-w-full'
+          : 'max-w-[calc(100vw-300px)] md:max-w-[calc(100vw-250px)] '
       } overflow-auto`}
     >
       {boardToRender?.columns ? (
