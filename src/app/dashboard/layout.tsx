@@ -6,6 +6,7 @@ import { auth } from '../lib/firebase/config';
 import { Navbar } from '../ui/dashboard/Navbar';
 import Sidebar from '../ui/dashboard/Sidebar';
 import { SplashScreen } from '../ui/utils/SplashScreen';
+import { ErrorComponent } from '../ui/utils/ErrorComponent';
 
 export default function DashboardLayout({
   children,
@@ -47,12 +48,15 @@ export default function DashboardLayout({
       }
     };
 
-    fetchData();
+    console.log(user);
+
+    user !== null ? fetchData() : null;
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  if (boards.length === 0) {
-    return <SplashScreen />;
+  if (user === null) {
+    return <ErrorComponent />;
   }
 
   return isLoading ? (

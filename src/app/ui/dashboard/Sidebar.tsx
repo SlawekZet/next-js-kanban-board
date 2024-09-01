@@ -13,8 +13,13 @@ import { Button } from '../utils/buttons/Button';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default function Sidebar() {
-  const { isSidebarHidden, setIsSidebarHidden, setIsBoardMenuVisible } =
-    useKanbanTaskManagerContext();
+  const {
+    isSidebarHidden,
+    setIsSidebarHidden,
+    setIsBoardMenuVisible,
+    setBoards,
+    setBoardToRender,
+  } = useKanbanTaskManagerContext();
 
   const handleHideSidebarClick = () => {
     setIsSidebarHidden((prevIsSidebarHidden) => !prevIsSidebarHidden);
@@ -31,9 +36,8 @@ export default function Sidebar() {
 
   const handleSignOut = () => {
     if (user) {
-      router.refresh();
       setIsBoardMenuVisible(false);
-      signOut(auth);
+      setBoardToRender(null);
       console.log(`${user?.email} has been logged out`);
     }
     router.push('/');
