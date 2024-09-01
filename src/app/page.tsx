@@ -66,10 +66,13 @@ export default function Home() {
     } else {
       try {
         const res = await signInWithEmailAndPassword(email, password);
-        setEmail('');
-        setPassword('');
-        router.refresh();
-        router.push('/dashboard');
+        if (res?.user.email) {
+          setEmail('');
+          setPassword('');
+          router.push('/dashboard');
+        } else {
+          throw new Error('Sign in failed.');
+        }
       } catch (error) {
         console.error('An error has occured:', error);
       }
