@@ -88,15 +88,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen ">
-      <div className="flex flex-col w-[450px] bg-gray1 dark:bg-gray4 items-center text-center gap-4 p-8 rounded-xl shadow-lg">
+    <main className="flex flex-col justify-center items-center h-screen mob:w-screen">
+      <div className="flex flex-col mob:w-full w-[450px] mob:bg-white bg-gray1 dark:bg-gray4 items-center text-center gap-4 p-8 rounded-xl mob:shadow-none shadow-lg">
         {resolvedTheme === 'dark' ? (
           <Image
             width={200}
             height={85}
             src="/logo-light.svg"
             alt="kanban task manager logotype"
-            className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+            className="p-6 border-r-[1px] mob:border-white border-gray2 dark:border-gray4"
           />
         ) : (
           <Image
@@ -104,7 +104,7 @@ export default function Home() {
             height={85}
             src="/logo-dark.svg"
             alt="kanban task manager logotype"
-            className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+            className="p-6 border-r-[1px] mob:border-white border-gray2 dark:border-gray4"
           />
         )}
 

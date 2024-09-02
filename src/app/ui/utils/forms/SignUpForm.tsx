@@ -18,10 +18,10 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({
 }) => {
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)} className="w-3/4 mb-2">
+      <form onSubmit={(e) => handleSubmit(e)} className="w-3/4 mob:w-full mb-2">
         <div className="mb-4">
           <label
-            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2"
+            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2 mob:hidden"
             htmlFor="email"
           >
             Email
@@ -29,7 +29,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({
           <input
             id="email"
             type="email"
-            className="w-full px-3 py-2 rounded-lg dark:bg-gray5"
+            className="w-full px-3 py-2 rounded-lg dark:bg-gray5 mob:border-gray3 mob:border-[1px]"
             value={email}
             placeholder="Type your email"
             onChange={(e) => setEmail(e.target.value)}
@@ -38,7 +38,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({
         </div>
         <div className="mb-6">
           <label
-            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2"
+            className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2 mob:hidden"
             htmlFor="password"
           >
             Password
@@ -46,7 +46,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({
           <input
             id="password"
             type="password"
-            className="w-full px-3 py-2 rounded-lg dark:bg-gray5"
+            className="w-full px-3 py-2 rounded-lg dark:bg-gray5 mob:border-gray3 mob:border-[1px]"
             value={password}
             placeholder="Type password"
             onChange={(e) => setPassword(e.target.value)}
@@ -56,7 +56,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({
         <div className="flex items-center justify-center">
           <Button
             // type="submit"
-            className="font-bold bg-gray2 dark:bg-gray5 px-4 py-2 rounded-lg w-[150px] text-center shadow-md"
+            className="font-bold mob:bg-gray1 mob:w-full bg-gray2 dark:bg-gray5 px-4 py-2 rounded-lg w-[150px] text-center shadow-md"
           >
             Sign Up
           </Button>

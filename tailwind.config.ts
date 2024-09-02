@@ -32,7 +32,7 @@ const config: Config = {
     },
     screens: {
       md: { max: '768px' },
-      mob: { max: '375px' },
+      mob: { max: '430px' },
       lg: { max: '1024px' },
       xl: { max: '1440px' },
     },
