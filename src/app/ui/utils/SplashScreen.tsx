@@ -22,7 +22,7 @@ export const SplashScreen = () => {
                 cy="12"
                 r="10"
                 stroke="#635FC7"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <path
                 className="opacity-75"

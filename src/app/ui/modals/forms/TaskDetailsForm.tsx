@@ -121,7 +121,7 @@ export const TaskDetailsForm: React.FC<TaskDetailsFormProps> = ({
         />
       ) : (
         <div>
-          <div className="flex flex-row  justify-between cursor-default">
+          <div className="flex flex-row justify-between cursor-default">
             <h1 className="font-bold text-lg dark:text-white pr-2">
               {task.title}
             </h1>
@@ -130,7 +130,7 @@ export const TaskDetailsForm: React.FC<TaskDetailsFormProps> = ({
             </Button>
           </div>
           {isMenuVisible && (
-            <div className="absolute left-[360px] p-6 bg-white dark:bg-gray6 flex flex-col gap-2 items-start w-[120px] shadow-md rounded-md text-sm z-50">
+            <div className="absolute left-[360px] mob:left-[200px] p-6 bg-white dark:bg-gray6 flex flex-col gap-2 items-start w-[120px] shadow-md rounded-md text-sm z-50">
               <Button
                 onClick={handleEditClick}
                 className="text-left dark:text-gray3"

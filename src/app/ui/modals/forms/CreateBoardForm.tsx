@@ -100,7 +100,7 @@ export const CreateBoardForm: React.FC<CreateBoardFormProps> = ({
   };
 
   return (
-    <form className="flex flex-col" method="dialog">
+    <form className="flex flex-col mob:block" method="dialog">
       <h1 className="font-bold text-lg pb-6 dark:text-white">Add New Board</h1>
       <label
         htmlFor="title"

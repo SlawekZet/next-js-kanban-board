@@ -192,7 +192,9 @@ export const EditTaskForm: React.FC<EditTaskFormProps> = ({
 
   return (
     <form className="flex flex-col" method="dialog">
-      <h1 className="font-bold text-lg pb-6 dark:text-white">Edit Task</h1>
+      <h1 className="font-bold text-lg mob:text-m pb-6 dark:text-white">
+        Edit Task
+      </h1>
       <label
         htmlFor="title"
         className="text-sm font-bold text-gray3 pb-2 dark:text-white"
@@ -202,8 +204,8 @@ export const EditTaskForm: React.FC<EditTaskFormProps> = ({
       <input
         type="text"
         id="title"
-        className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 dark:bg-gray5 dark:border-gray4 dark:text-white"
-        defaultValue={taskName}
+        className="border-[1px] rounded-md mob:text-sm border-gray2 py-2 px-4 dark:bg-gray5 dark:border-gray4 dark:text-white"
+        value={taskName}
         onChange={(e) => handleTaskNameChange(e)}
       />
       <label
@@ -232,8 +234,8 @@ export const EditTaskForm: React.FC<EditTaskFormProps> = ({
             <input
               type="text"
               id="subtask1"
-              className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 w-full dark:bg-gray5 dark:border-gray4 dark:text-white"
-              defaultValue={subtask.title}
+              className="border-[1px] rounded-md border-gray2 mob:text-sm placeholder:text-sm py-2 px-4 w-full dark:bg-gray5 dark:border-gray4 dark:text-white"
+              value={subtask.title}
               placeholder={`Subtask ${index + 1}`}
               onChange={(e) => handleSubtaskNameChange(e, index)}
             />

@@ -95,9 +95,14 @@ export const Navbar = () => {
             {boardToRender ? boardToRender.name : 'No board chosen'}
           </h1>
           {/* TODO: make chevron to stick to the left */}
-          <button onClick={handleMobileMenuClick} className="flex items-center">
-            <ChevronDownIcon className="size-6" fill="#828FA3" />
-          </button>
+          {isMobile ? (
+            <button
+              onClick={handleMobileMenuClick}
+              className="flex items-center"
+            >
+              <ChevronDownIcon className="size-6" fill="#828FA3" />
+            </button>
+          ) : null}
         </div>
       </div>
       <div className="flex items-center pl-4 mob:pl-0 ">
@@ -113,7 +118,7 @@ export const Navbar = () => {
               <EllipsisVerticalIcon className="size-6" fill="#828FA3" />
             </Button>
             {isBoardMenuVisible && (
-              <div className="absolute left-4 top-14 p-6 bg-white dark:bg-gray6 flex flex-col gap-2 items-start w-[180px] shadow-md rounded-md text-sm z-50">
+              <div className="absolute mob:left-[-60px] left-4 mob:top-10 top-14 mob:p-4 p-6 bg-white dark:bg-gray6 flex flex-col gap-2 items-start w-[180px] mob:w-[140px] shadow-md rounded-md text-sm z-50">
                 <Button
                   onClick={() => handleModalClick('edit')}
                   className="text-left dark:text-gray3"
@@ -130,7 +135,10 @@ export const Navbar = () => {
             )}
           </div>
         ) : null}
-        <Modal id="mobileMenu">
+        <Modal
+          id="mobileMenu"
+          className="px-0 py-1 max-w-[300px] absolute top-[-180px]"
+        >
           <MobileMenu />
         </Modal>
         <Modal id="modalTask">

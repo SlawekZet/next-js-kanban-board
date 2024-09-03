@@ -144,7 +144,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ modalId }) => {
       <input
         type="text"
         id="title"
-        className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 dark:bg-gray5 dark:border-gray4 dark:text-white"
+        className="border-[1px] rounded-md border-gray2 placeholder:text-sm mob:text-sm py-2 px-4 dark:bg-gray5 dark:border-gray4 dark:text-white"
         placeholder="e.g. Take coffee break"
         value={taskName}
         onChange={(e) => handleTaskNameChange(e)}
@@ -157,7 +157,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ modalId }) => {
       </label>
       <textarea
         id="desc"
-        className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 dark:text-white dark:bg-gray5 dark:border-gray4"
+        className="border-[1px] rounded-md border-gray2 mob:text-sm placeholder:text-sm py-2 px-4 dark:text-white dark:bg-gray5 dark:border-gray4"
         placeholder="e.g. It’s always good to take a break. This 15 minute break will 
         recharge the batteries a little."
         value={description}
@@ -172,7 +172,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ modalId }) => {
             <input
               type="text"
               id="subtask1"
-              className="border-[1px] rounded-md border-gray2 placeholder:text-sm py-2 px-4 w-full dark:bg-gray5 dark:border-gray4 dark:text-white"
+              className="border-[1px] rounded-md border-gray2 mob:text-sm placeholder:text-sm py-2 px-4 w-full dark:bg-gray5 dark:border-gray4 dark:text-white"
               placeholder={`Subtask ${index + 1}`}
               onChange={(e) => handleSubtaskNameChange(e, index)}
             />
