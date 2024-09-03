@@ -20,7 +20,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
 }) => {
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)} className="w-3/4 mb-2">
+      <form onSubmit={(e) => handleSubmit(e)} className="w-3/4 mob:w-full mb-2">
         <div className="mb-4">
           <label
             className="block text-gray5 dark:text-gray2 text-sm font-bold mb-2 mob:hidden"

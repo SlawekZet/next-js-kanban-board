@@ -1,6 +1,9 @@
 'use client';
 import { useKanbanTaskManagerContext } from '@/app/lib/contexts/KanbanTaskManagerContext';
-import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
+import {
+  EllipsisVerticalIcon,
+  ChevronDownIcon,
+} from '@heroicons/react/20/solid';
 import { Button } from '../utils/buttons/Button';
 import { ButtonPrimaryL } from '../utils/buttons/ButtonPrimaryL';
 import Image from 'next/image';
@@ -9,6 +12,8 @@ import CreateTaskForm from '../modals/forms/CreateTaskForm';
 import { DeleteElement } from '../modals/forms/DeleteElement';
 import { EditBoardForm } from '../modals/forms/EditBoardForm';
 import { Modal } from '../modals/Modal';
+import { useEffect, useState } from 'react';
+import MobileMenu from '../modals/forms/MobileMenu';
 
 export const Navbar = () => {
   const {
@@ -18,8 +23,30 @@ export const Navbar = () => {
     isBoardMenuVisible,
   } = useKanbanTaskManagerContext();
 
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const isMobile = viewportWidth <= 426;
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const handleCreateNewTaskClick = () => {
     const modal = document.querySelector<HTMLDialogElement>('#modalTask');
+    if (modal) {
+      modal.showModal();
+    }
+  };
+
+  const handleMobileMenuClick = () => {
+    const modal = document.querySelector<HTMLDialogElement>('#mobileMenu');
     if (modal) {
       modal.showModal();
     }
@@ -43,38 +70,44 @@ export const Navbar = () => {
     <div className="flex flex-row justify-between w-full h-[80px] md:h-[80px] border-b-[1px] border-gray2 bg-white dark:bg-gray5 dark:border-gray4 dark:text-white">
       <div className=" flex flex-row items-center justify-center">
         <div className="">
-          {isSidebarHidden ? (
+          {isSidebarHidden || isMobile ? (
             resolvedTheme === 'dark' ? (
               <Image
-                width={200}
+                width={isMobile ? 75 : 200}
                 height={85}
-                src="/logo-light.svg"
+                src={isMobile ? '/logo-mobile.svg' : '/logo-light.svg'}
                 alt="kanban task manager logotype"
-                className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+                className="p-6 border-r-[1px] border-gray2 dark:border-gray4 min-w-[75px]"
               />
             ) : (
               <Image
-                width={200}
+                width={isMobile ? 50 : 200}
                 height={85}
-                src="/logo-dark.svg"
+                src={isMobile ? '/logo-mobile.svg' : '/logo-dark.svg'}
                 alt="kanban task manager logotype"
-                className="p-6 border-r-[1px] border-gray2 dark:border-gray4"
+                className="p-6 mob:p-5 border-r-[1px] border-gray2 mob:border-none dark:border-gray4 min-w-[75px]"
               />
             )
           ) : null}
         </div>
-        <h1 className="p-6 md:p-4 font-bold text-xl md:text-lg mob:text-sm flex">
-          {boardToRender ? boardToRender.name : 'No board chosen'}
-        </h1>
+        <div className="flex">
+          <h1 className="p-6 md:p-4 mob:pl-0 mob:pr-2 font-bold text-xl md:text-lg mob:text-lg">
+            {boardToRender ? boardToRender.name : 'No board chosen'}
+          </h1>
+          {/* TODO: make chevron to stick to the left */}
+          <button onClick={handleMobileMenuClick} className="flex items-center">
+            <ChevronDownIcon className="size-6" fill="#828FA3" />
+          </button>
+        </div>
       </div>
-      <div className="flex items-center pl-4">
+      <div className="flex items-center pl-4 mob:pl-0 ">
         {boardToRender ? (
           <div className="flex relative">
             <ButtonPrimaryL
               onClick={handleCreateNewTaskClick}
-              className="md:text-sm md:h-10 md:px-4 md:w-40 w-48 "
+              className="md:text-sm md:h-10 md:px-4 md:w-40 w-48 mob:w-12 mob:text-xl mob:h-8 mob:pt-[9px]"
             >
-              + Add new Task
+              {viewportWidth <= 426 ? '+' : '+ Add new Task'}
             </ButtonPrimaryL>
             <Button onClick={handleMenuClick} className="px-2">
               <EllipsisVerticalIcon className="size-6" fill="#828FA3" />
@@ -97,7 +130,9 @@ export const Navbar = () => {
             )}
           </div>
         ) : null}
-
+        <Modal id="mobileMenu">
+          <MobileMenu />
+        </Modal>
         <Modal id="modalTask">
           <CreateTaskForm modalId="modalTask" />
         </Modal>

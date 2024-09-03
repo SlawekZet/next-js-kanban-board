@@ -66,7 +66,7 @@ export const BoardElement = () => {
       } ${
         isSidebarHidden
           ? 'max-w-full'
-          : 'max-w-[calc(100vw-300px)] md:max-w-[calc(100vw-250px)] '
+          : 'max-w-[calc(100vw-300px)] md:max-w-[calc(100vw-250px)] mob:max-w-full'
       } overflow-auto`}
     >
       {boardToRender?.columns ? (

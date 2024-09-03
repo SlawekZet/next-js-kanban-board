@@ -5,9 +5,10 @@ import { useKanbanTaskManagerContext } from '@/app/lib/contexts/KanbanTaskManage
 interface ModalProps {
   children: ReactNode;
   id: string;
+  className?: string;
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, id }) => {
+export const Modal: React.FC<ModalProps> = ({ children, id, className }) => {
   const { setIsElementEdited, setIsMenuVisible, setIsDeleteModalVisible } =
     useKanbanTaskManagerContext();
   useEffect(() => {
@@ -63,7 +64,7 @@ export const Modal: React.FC<ModalProps> = ({ children, id }) => {
   return (
     <dialog
       id={id}
-      className="self-center justify-self-center rounded-lg w-[480px] p-8 backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 "
+      className={`self-center justify-self-center rounded-lg w-[480px] p-8 backdrop:bg-gray6 backdrop:opacity-70 dark:bg-gray5 ${className}`}
     >
       {children}
     </dialog>

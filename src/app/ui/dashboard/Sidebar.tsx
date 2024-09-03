@@ -2,7 +2,6 @@
 import { useKanbanTaskManagerContext } from '@/app/lib/contexts/KanbanTaskManagerContext';
 import { auth } from '@/app/lib/firebase/config';
 import { EyeIcon, EyeSlashIcon, UserIcon } from '@heroicons/react/24/outline';
-import { signOut } from 'firebase/auth';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -53,7 +52,7 @@ export default function Sidebar() {
       </Button>
     </div>
   ) : (
-    <section className=" flex flex-col justify-between flex-1 pb-4 min-w-[300px] max-w-[300px] md:min-w-[250px] md:max-w-[250px] border-r-[1px] border-gray2 dark:border-gray4 dark:bg-gray5">
+    <section className=" flex flex-col justify-between flex-1 pb-4 min-w-[300px] max-w-[300px] md:min-w-[250px] md:max-w-[250px] border-r-[1px] border-gray2 dark:border-gray4 dark:bg-gray5 mob:hidden">
       <div className="">
         {resolvedTheme === 'dark' ? (
           <Image
