@@ -5,6 +5,7 @@ import { CreateBoardForm } from '../modals/forms/CreateBoardForm';
 import { Modal } from '../modals/Modal';
 import { Board } from '../utils/BoardInterfaces';
 import { Button } from '../utils/buttons/Button';
+import ReactDOM from 'react-dom';
 
 export const BoardList = () => {
   const { setBoardToRender, boards, activeBoard, setActiveBoard, setError } =
@@ -62,9 +63,12 @@ export const BoardList = () => {
           <TableCellsIcon fill="#635FC7" className="size-6" />
           <p>+ Create New Board</p>
         </Button>
-        <Modal id="ModalBoard">
-          <CreateBoardForm modalId="ModalBoard" />
-        </Modal>
+        {ReactDOM.createPortal(
+          <Modal id="ModalBoard">
+            <CreateBoardForm modalId="ModalBoard" />
+          </Modal>,
+          document.body
+        )}
       </div>
     </>
   );

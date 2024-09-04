@@ -23,8 +23,9 @@ export const Navbar = () => {
     isBoardMenuVisible,
   } = useKanbanTaskManagerContext();
 
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-  const isMobile = viewportWidth <= 426;
+  const isMobile = viewportWidth <= 431;
   useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
@@ -77,7 +78,7 @@ export const Navbar = () => {
                 height={85}
                 src={isMobile ? '/logo-mobile.svg' : '/logo-light.svg'}
                 alt="kanban task manager logotype"
-                className="p-6 border-r-[1px] border-gray2 dark:border-gray4 min-w-[75px]"
+                className="p-6 border-r-[1px] border-gray2 mob:border-none dark:border-gray4 min-w-[75px]"
               />
             ) : (
               <Image
@@ -100,19 +101,19 @@ export const Navbar = () => {
               onClick={handleMobileMenuClick}
               className="flex items-center"
             >
-              <ChevronDownIcon className="size-6" fill="#828FA3" />
+              <ChevronDownIcon className="size-6 mr-2" fill="#828FA3" />
             </button>
           ) : null}
         </div>
       </div>
-      <div className="flex items-center pl-4 mob:pl-0 ">
+      <div className="flex items-center pl-4 mob:pl-0 relative">
         {boardToRender ? (
           <div className="flex relative">
             <ButtonPrimaryL
               onClick={handleCreateNewTaskClick}
               className="md:text-sm md:h-10 md:px-4 md:w-40 w-48 mob:w-12 mob:text-xl mob:h-8 mob:pt-[9px]"
             >
-              {viewportWidth <= 426 ? '+' : '+ Add new Task'}
+              {viewportWidth <= 431 ? '+' : '+ Add new Task'}
             </ButtonPrimaryL>
             <Button onClick={handleMenuClick} className="px-2">
               <EllipsisVerticalIcon className="size-6" fill="#828FA3" />
@@ -135,10 +136,7 @@ export const Navbar = () => {
             )}
           </div>
         ) : null}
-        <Modal
-          id="mobileMenu"
-          className="px-0 py-1 max-w-[300px] absolute top-[-180px]"
-        >
+        <Modal id="mobileMenu" className="px-0 py-1 max-w-[300px]">
           <MobileMenu />
         </Modal>
         <Modal id="modalTask">

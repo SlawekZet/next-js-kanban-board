@@ -2,7 +2,6 @@
 import { useKanbanTaskManagerContext } from '@/app/lib/contexts/KanbanTaskManagerContext';
 import { auth } from '@/app/lib/firebase/config';
 import { UserIcon } from '@heroicons/react/24/outline';
-import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
