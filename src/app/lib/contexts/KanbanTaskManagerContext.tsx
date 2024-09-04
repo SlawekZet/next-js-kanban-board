@@ -24,8 +24,6 @@ interface KanbanTaskManagerContextProps {
   setError: React.Dispatch<React.SetStateAction<string>>;
   activeBoard: number;
   setActiveBoard: React.Dispatch<React.SetStateAction<number>>;
-  isCreateBoardModalVisible: boolean;
-  setIsCreateBoardModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface KanbanTaskManagerProviderProps {
@@ -47,8 +45,6 @@ export const KanbanTaskManagerProvider: React.FC<
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
   const [isBoardMenuVisible, setIsBoardMenuVisible] = useState<boolean>(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] =
-    useState<boolean>(false);
-  const [isCreateBoardModalVisible, setIsCreateBoardModalVisible] =
     useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [activeBoard, setActiveBoard] = useState<number>(0);
@@ -74,8 +70,6 @@ export const KanbanTaskManagerProvider: React.FC<
     setError,
     activeBoard,
     setActiveBoard,
-    isCreateBoardModalVisible,
-    setIsCreateBoardModalVisible,
   };
 
   return (
